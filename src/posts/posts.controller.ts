@@ -21,22 +21,25 @@ export class PostsController {
   }
 
   @Get(':id')
-  getOnePost(@Param('id') id: number): string {
+  getOnePost(@Param('id') id: number): Promise<CreatePosts> {
     return this.postsService.getOnePost(id);
   }
 
   @Post()
-  createPost(@Body() post: CreatePosts): string {
+  createPost(@Body() post: CreatePosts): Promise<CreatePosts> {
     return this.postsService.createPost(post);
   }
 
   @Put(':id')
-  updatePost(@Param('id') id: number, @Body() post: CreatePosts): string {
-    return this.postsService.updatePost(id, post);
+  updatePost(
+    @Param('id') id: number,
+    @Body() newPost: CreatePosts,
+  ): Promise<CreatePosts> {
+    return this.postsService.updatePost(id, newPost);
   }
 
   @Delete(':id')
-  deletePost(@Param('id') id: number): string {
+  deletePost(@Param('id') id: number): Promise<CreatePosts> {
     return this.postsService.deletePost(id);
   }
 }

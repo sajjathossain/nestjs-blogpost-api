@@ -1,8 +1,6 @@
 export class CreatePosts {
+  readonly userId: number;
   readonly id: number;
   readonly title: string;
-  readonly tags: string;
-  readonly content: string;
-  readonly date: string;
-  readonly likes: number;
+  readonly body: string;
 }
